@@ -247,12 +247,12 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 
 <!-- Put this wherever you would like your player to appear -->
 <div class="video-container">
-    <video id="myVideo" onclick="this.paused ? this.play() : this.pause();">
+    <video id="myVideo" muted loop playsinline>
         <source src="/media/remVista_Homepage_v2_Set-03.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <div class="play-button">&#9658;</div> <!-- Play icon -->
-</div>	
+    <div class="play-button">&#9658;</div>
+</div>
 	<style>
     .video-container {
         position: relative;
@@ -303,19 +303,19 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 			
 											<div class="wrap stat-wrap">
 											<div class="lazyload dropin delay-0" data-type="decimal">
-							<h2>CHF13.9BN+</h2>
+							<h2>CHF0.9B</h2>
 							<p class="sub-head">Assets Deployed</p>
 						</div>
 					 					 						<div class="lazyload dropin delay-1" data-type="decimal">
-							<h2>CHF5.1BN+</h2>
+							<h2>CHF0.1B</h2>
 							<p class="sub-head">FounderDirect Origination</p>
 						</div>
 					 					 						<div class="lazyload dropin delay-2" data-type="decimal">
-							<h2>CHF8.9BN</h2>
+							<h2>CHF0.5B</h2>
 							<p class="sub-head">Assets Under Management</p>
 						</div>
 					 					 						<div class="lazyload dropin delay-3">
-							<h2>650+</h2>
+							<h2>600+</h2>
 							<p class="sub-head">Credit Transactions Facilitated</p>
 						</div>
 					 					 				</div>
@@ -660,6 +660,22 @@ function heateorSssLoadEvent(e) {var t=window.onload;if (typeof window.onload!="
 
 
 <script defer="" src="js/autoptimize_6e8bf560b7a1970b5c9615d29a5167aa.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.querySelector("#myVideo");
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.6 });
+
+    observer.observe(video);
+});
+</script>
 
 </body></html>
